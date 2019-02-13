@@ -1,0 +1,40 @@
+{% extends 'taskapp/base.html' %}
+
+{% block content%}
+<h1></h1>
+<table class="table table-hover">
+    <threat>
+        <tr>
+            <th>タスク名</th>
+            <th>担当者</th>
+            <th>期日</th>
+            <th>更新</th>
+            <th>削除</th>
+        </tr>
+    </threat>
+    <tbody>
+        {% for task in task_list %}
+            <tr>
+                <td><a href="{% url 'taskapp:detail' task.pk%}">{{ task.title }}</a></td>
+                <td>{{ task.staff }}</td>
+                <td>{{ task.deadline }}</td>
+                {% if user.is_superuser %}
+                <td><a href="{% url 'taskapp:update' task.pk%}"
+                     class="btn btn-outline-success">更新</a></td>
+                {% endif %}
+                {% if user.is_superuser %}
+                <td><a href="{% url 'taskapp:delete' task.pk%}"
+                     class="btn btn-outline-danger">削除</a></td>
+                {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">前へ</a>
+{% endif %}
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">次へ</a>
+{% endif %}
+
+{% endblock %}

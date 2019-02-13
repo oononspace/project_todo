@@ -1,0 +1,30 @@
+{% extends 'taskapp/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+            <th>タスク名</th>
+            <td>{{ form.title }}</td>
+        </tr>
+        <tr>
+            <th>詳細</th>
+            <td>{{ form.text }}</td>
+        </tr>
+        <tr>
+            <th>期日</th>
+            <td>{{ form.deadline }}</td>
+        </tr>
+        <tr>
+            <th>担当者</th>
+            <td>{{ form.staff }}</td>
+        </tr>
+        <tr>
+            <th>作成日</th>
+            <td>{{ form.date }}</td>
+        </tr>
+    </table>
+<button type="submit" class="btn btn-primary">送信</button>
+{% csrf_token %}
+</form>
+{% endblock %}

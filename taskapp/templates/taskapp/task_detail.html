@@ -1,0 +1,30 @@
+{% extends 'taskapp/base.html' %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>タスク名</th>
+            <td>{{ task.title }}</td>
+        </tr>
+        <tr>
+            <th>詳細</th>
+            <td>{{ task.text | linebreaksbr }}</td>
+        </tr>
+        <tr>
+            <th>期日</th>
+            <td>{{ task.deadline }}</td>
+        </tr>
+        <tr>
+            <th>担当者</th>
+            <td>{{ task.staff }}</td>
+        </tr>
+        <tr>
+            <th>作成日</th>
+            <td>{{ task.date }}</td>
+        </tr>
+    </table>
+    <tr>
+        <a class="btn btn-outline-info" 
+        href="{% url 'taskapp:index' %}">戻る</a>
+    </tr>
+{% endblock %}

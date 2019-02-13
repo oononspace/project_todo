@@ -1,0 +1,39 @@
+{% extends 'taskapp/base.html' %}
+
+
+{% block content %}
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+            <th>タスク名</th>
+            <td>{{ task.title }}</td>
+        </tr>
+        <tr>
+            <th>詳細</th>
+            <td>{{ task.text | linebreaksbr }}</td>
+        </tr>
+        <tr>
+            <th>期日</th>
+            <td>{{ task.deadline }}</td>
+        </tr>
+        <tr>
+            <th>担当者</th>
+            <td>{{ task.staff }}</td>
+        </tr>
+        <tr>
+            <th>作成日</th>
+            <td>{{ task.date }}</td>
+        </tr>
+    </table>
+    <div class="alert alert-danger" role="alert">
+        <strong>警告！</strong>一度削除したら元には戻せません。本当に削除しますか？
+    </div>
+
+<a class="btn btn-outline-info" href="{% url 'taskapp:index' %}">戻る</a>
+<button type="submit" class="btn btn-danger">削除</button>
+
+{% csrf_token %}
+</form>
+
+
+{% endblock %}
